@@ -1,0 +1,10 @@
+<h1>Course list</h1>
+<ul>
+    {% for course in courses %}
+    <li> {{ course.Course_name }} </li>
+    {% empty %}
+    <li> No courses available </li>
+    {% endfor %}
+    </ul>
+    <a href = "{% url 'add_course' id %}">Add a new course </a>
+

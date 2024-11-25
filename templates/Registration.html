@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        form-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #007BFF;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #555;
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: red;
+            font-size: 0.875rem;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group select[multiple] {
+            height: 120px;
+        }
+
+        .form-errors {
+            margin-top: -10px;
+            margin-bottom: 10px;
+            font-size: 0.875rem;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Register</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ form.username.value }}" required>
+                {% if form.username.errors %}
+                <ul class="form-errors">
+                    {% for error in form.username.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="{{ form.email.value }}" required>
+                {% if form.email.errors %}
+                <ul class="form-errors">
+                    {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+                <label for="password1">Password</label>
+                <input type="password" id="password1" name="password1" required>
+                {% if form.password1.errors %}
+                <ul class="form-errors">
+                    {% for error in form.password1.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+                <label for="password2">Confirm Password</label>
+                <input type="password" id="password2" name="password2" required>
+                {% if form.password2.errors %}
+                <ul class="form-errors">
+                    {% for error in form.password2.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <!-- Birth Date -->
+            <div class="form-group">
+                <label for="birth_date">Birth Date</label>
+                <input type="date" id="birth_date" name="birth_date" value="{{ form.birth_date.value }}" required>
+                {% if form.birth_date.errors %}
+                <ul class="form-errors">
+                    {% for error in form.birth_date.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <!-- Profile Picture -->
+            <div class="form-group">
+                <label for="profile_picture">Profile Picture</label>
+                <input type="file" id="profile_picture" name="profile_picture" accept="image/*" required>
+                {% if form.profile_picture.errors %}
+                <ul class="form-errors">
+                    {% for error in form.profile_picture.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+
+            <!-- Checkboxes -->
+            <div class="checkbox-group">
+                <input type="checkbox" id="is-student" name="is_student" {% if form.is_student.value %}checked{% endif %}>
+                <label for="is-student">Are you a student?</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="is-teacher" name="is_teacher" {% if form.is_teacher.value %}checked{% endif %}>
+                <label for="is-teacher">Are you a teacher?</label>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="form-group">
+                <label for="course">Select Courses</label>
+                <select id="course" name="course" multiple>
+                    <option value="Science" {% if 'Science' in form.course.value %}selected{% endif %}>Science</option>
+                    <option value="Maths" {% if 'Maths' in form.course.value %}selected{% endif %}>Maths</option>
+                    <option value="C Programming" {% if 'C Programming' in form.course.value %}selected{% endif %}>C Programming</option>
+                    <option value="Computer Science" {% if 'Computer Science' in form.course.value %}selected{% endif %}>Computer Science</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+</html>

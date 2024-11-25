@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        /* General Reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        /* Container Styling */
+        .container {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Button Group Styling */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Button Styling */
+        .btn {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Button Colors */
+        .btn-register {
+            background-color: #4CAF50;
+        }
+
+        .btn-add-course {
+            background-color: #2196F3;
+        }
+
+        .btn-edit-student {
+            background-color: #FF9800;
+        }
+
+        .btn-delete-student {
+            background-color: #F44336;
+        }
+
+        /* Hover Effects */
+        .btn:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 600px) {
+            .button-group {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Management System
+        </h1>
+        <div class="button-group">
+            <a href="{% url 'student_registration' %}" class="btn btn-register">Register</a>
+            <a href="{% url 'show' %}" class="btn btn-edit-student">Show Students</a>
+            <a href="{% url 'ShowTeacher' %}" class="btn btn-edit-student">Show Teacher</a>
+        </div>
+    </div>
+</body>
+</html>
