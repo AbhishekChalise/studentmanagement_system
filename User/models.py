@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-
+from courses.models import Course_models
 class User_Model(AbstractUser):
     SCIENCE = 'Science'
     MATHS = 'Maths'
@@ -13,8 +13,8 @@ class User_Model(AbstractUser):
         (C_PROGRAMMING, 'C Programming'),
         (COMPUTER_SCIENCE, 'Computer Science'),
     ]
-
-    course = models.CharField(max_length=255,null=True,blank = True , choices = COURSE_CHOICES )
+    course = models.ManyToManyField(Course_models , related_name = 'User_Course_FK',null = True , blank = True)
+    course1 = models.CharField(max_length=255,null=True,blank = True , choices = COURSE_CHOICES )
     birth_date = models.DateField(null=True, blank=True)
     profile_picture = models.ImageField(upload_to='profile_pics/', null = True,)
     is_student = models.BooleanField(default=False)

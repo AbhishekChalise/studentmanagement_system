@@ -1,10 +1,66 @@
-<h1>Course list</h1>
-<ul>
-    {% for course in courses %}
-    <li> {{ course.Course_name }} </li>
-    {% empty %}
-    <li> No courses available </li>
-    {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course List</h1>
+    <ul>
+        {% for course in courses %}
+        <li>
+            {{ course.Course_name }}
+            <div>
+                <a href="{% url 'Assign_grade' id course.id %}">
+                    <button>Add Grade</button>
+                </a>
+            </div>
+        </li>
+        {% empty %}
+        <li>No courses available</li>
+        {% endfor %}
     </ul>
-    <a href = "{% url 'add_course' id %}">Add a new course </a>
-
+    <a href="{% url 'add_course' id %}">Add a new course</a>
+</body>
+</html>

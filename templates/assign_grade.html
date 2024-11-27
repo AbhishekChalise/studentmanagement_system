@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade</title>
+</head>
+<body>
+    <h2>Assign Course: </h2>
+    <form method = 'POST'>
+        {% csrf_token %}
+        <p> Student: {{student.Student_name}} </p>
+        <p> Course: {{course.Course_name}}</p>
+        <label for = "grade" >Enter grade: </label>
+        <input type = "text" id ="grade" name = "grade" required>
+        <button type = "submit">Assign grade:</button>
+        </form>
+</body>
+</html>

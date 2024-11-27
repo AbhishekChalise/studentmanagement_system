@@ -1,0 +1,17 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Course List</title>
+</head>
+<body>
+    <h1>Hey {{user.username}}</h1>
+    <ul>
+        {% for course in courses %}
+        <li>{{ course.Course_name }}</li> <!-- Replace `Course_name` with your field name -->
+        {% empty %}
+        <li>No Courses Available</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

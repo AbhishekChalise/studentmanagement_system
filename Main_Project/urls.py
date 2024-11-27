@@ -28,7 +28,9 @@ from Student.views import show_students
 from teacher.views import show_teacher,edit_teacher,delete_teacher
 from Student.views import edit_students,delete_student
 from Student.views import home
-from courses.views import course_list,add_course
+from courses.views import course_list,add_course,teacher_list,teacher_addcourse
+from teacher.views import edit_teacher,show_teacher,delete_teacher
+from Student.views import Assign_Grade,Show_grade,Course_grades
 
 urlpatterns = [
     path('',home,name = 'home'),
@@ -45,6 +47,11 @@ urlpatterns = [
     path('teacher/delete/<int:id>/',delete_teacher , name = 'delete_teacher'),
     path('course_list/<int:id>/',course_list,name= 'course_list'),
     path('add_course/<int:id>/',add_course,name = 'add_course'),
+    path('teacher_list/<int:id>/',teacher_list,name ='teacher_courses'),
+    path('teacher_addcourse/<int:id>/',teacher_addcourse,name = 'teacher_add_course'),
+    path('assign_grade/<int:student_models_id>/<int:course_models_id>/',Assign_Grade,name = 'Assign_grade'),
+    path('show_grade/<int:student_models_id>/<int:course_models_id>',Show_grade, name = 'Show_grade'),
+    path('course_grades/<int:student_models_id>',Course_grades , name = 'Course_grades')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

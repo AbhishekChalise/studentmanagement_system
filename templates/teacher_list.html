@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Course List</title>
+</head>
+<body>
+    <h1>Teacher Course List</h1>
+    <ul>
+        {% for course in teacher_course %}
+        <li>{{ course.Course_name }}</li> <!-- Replace `Course_name` with your field name -->
+        {% empty %}
+        <li>No Courses Available</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'teacher_add_course' id %}">Add a New Course For Teacher</a>
+</body>
+</html>

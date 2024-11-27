@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade Display</title>
+</head>
+<body>
+    {% for course in course %}
+    <h1>Grade for {{ student.Student_name }} in {{ course.Course_name }}</h1>
+
+    {% if grade %}
+        <p>The grade is: {{ grade }}</p>
+    {% else %}
+        <p>No grade has been assigned yet for this course.</p>
+    {% endif %}
+    {% endfor %}
+    
+    <!-- Form to submit student and course IDs to fetch grade -->
+        {% csrf_token %}
+    </form>
+</body>
+</html>

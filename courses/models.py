@@ -12,9 +12,8 @@ COURSE_CHOICES = [
 ]
 
 class Course_models(models.Model):
-    Course_name = models.CharField(max_length=100 , choices= COURSE_CHOICES )
+    Course_name = models.CharField(max_length=100 , choices= COURSE_CHOICES)
     description = models.TextField(blank = True , null = True)
 
     class Meta:
         db_table = 'course'
-

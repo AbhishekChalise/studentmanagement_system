@@ -86,8 +86,9 @@
 <body>
 
 <h1>Student List</h1>
+ <!--logout Button-->
 <p>Session Info: {{ student_session }}</p>
-
+<a href = "http://127.0.0.1:8000/logout/" class="btn btn-courses"> LogOut </a>
 <ul>
     {% for student in student_obj %}
     <li>
@@ -101,7 +102,10 @@
             
             <!-- Courses Button -->
             <a href="{% url 'course_list' student.id %}" class="btn btn-courses">Courses</a>
-        </div>
+
+            <!-- Grades Button -->
+            <a href = "{% url 'Course_grades' student.id%}" class="btn btn-courses"> Grades </a>
+
     </li>
     {% empty %}
     <p class="empty-message">No Student Found</p>

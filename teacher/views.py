@@ -32,7 +32,7 @@ def edit_teacher(request , id):
             'form':form,
             'teacher':get_instance
         }
-        return render(request , edit.html , context)
+        return render(request , 'edit.html' , context)
     
     elif request.method == 'POST':
         form = Teacher_forms(request.POST , instance= get_instance)
