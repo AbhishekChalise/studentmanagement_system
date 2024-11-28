@@ -66,28 +66,34 @@ def edit_students(request , id):
 
     get_instance = get_object_or_404(Student_model , id = id)
 
+    #birth_date = get_instance.user.birth_date
+
     if request.method == 'GET':
         form = Student_Forms(instance = get_instance)
         context = {
             'form': form,
-            'student': get_instance 
+            'student': get_instance,
+          #  'birth_date':birth_date
         }
-        return render(request , 'edit.html',context)
+        return render(request , 'edit_student.html',context)
     
     elif request.method == 'POST':
         form = Student_Forms(request.POST , instance = get_instance)
+        print(form.errors)
         if form.is_valid():
             form.save()
+            print('The form is valid!!!!, i am inside the edit_student')
+            print(form.errors)
             # save the form
-            return redirect()
-        
+            return redirect('show')
+    
         else:
             context = {
                 'form':form,
                 'student':get_instance,
                 'error' : 'Please Correct The Error below'
             }
-            return render(request , 'Teacher_edit.html',context)
+            return render(request , 'edit_student.html',context)
         
 def delete_student(request,id):
     student = Student_model.objects.get(id = id)
@@ -211,8 +217,5 @@ def Course_grades(request, student_models_id,):
     }
     return render(request, 'show_enrolled.html', context)
 
-
-
-
-
+print("Hello World!!!!")
 

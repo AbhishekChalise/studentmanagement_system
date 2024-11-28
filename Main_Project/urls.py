@@ -31,6 +31,7 @@ from Student.views import home
 from courses.views import course_list,add_course,teacher_list,teacher_addcourse
 from teacher.views import edit_teacher,show_teacher,delete_teacher
 from Student.views import Assign_Grade,Show_grade,Course_grades
+from User.views import ChangePasswordView
 
 urlpatterns = [
     path('',home,name = 'home'),
@@ -55,3 +56,7 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += [
+    path('change-password/', ChangePasswordView.as_view(), name='change_password'),
+]

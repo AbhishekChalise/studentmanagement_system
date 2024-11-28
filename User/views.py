@@ -8,6 +8,8 @@ from courses.models import Course_models
 from courses.forms import Course_forms
 from Student.models import Student_model
 from teacher.models import Teacher_models
+from django.contrib.auth.forms import PasswordChangeForm
+
 # def login_admin(request):
 #     if request.method == 'POST':
 #         username = request.POST.get('username')
@@ -143,7 +145,7 @@ def login_admin(request):
                 teacher = Teacher_models.objects.get(user=user)
                 print(teacher)
                 course = teacher.course.all()
-                
+                print(course.values())
                 context = {
                 'user': user,
                 'course':course,
@@ -160,3 +162,17 @@ def login_admin(request):
 
     # If request is GET, render the login page
     return render(request, 'Login.html')
+
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.views import PasswordChangeView
+from django.urls import reverse_lazy
+
+class ChangePasswordView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('home')
+    template_name = 'change_password.html'
+
+
+
+
+

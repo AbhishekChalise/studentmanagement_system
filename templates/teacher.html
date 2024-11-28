@@ -1,16 +1,62 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teacher Course List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li.no-courses {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hey {{user.username}}</h1>
+    <h1>Hey {{ user.username }}</h1>
+    <h2> Your Teaching Courses are:</h2>
     <ul>
-        {% for course in courses %}
+        {% for course in course %}
         <li>{{ course.Course_name }}</li> <!-- Replace `Course_name` with your field name -->
         {% empty %}
-        <li>No Courses Available</li>
+        <li class="no-courses">No Courses Available</li>
         {% endfor %}
     </ul>
 </body>

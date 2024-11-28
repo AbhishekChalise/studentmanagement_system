@@ -225,15 +225,7 @@
             </div>
 
             <!-- Course Selection -->
-            <div class="form-group">
-                <label for="course">Select Courses</label>
-                <select id="course" name="course" multiple>
-                    <option value="Science" {% if 'Science' in form.course.value %}selected{% endif %}>Science</option>
-                    <option value="Maths" {% if 'Maths' in form.course.value %}selected{% endif %}>Maths</option>
-                    <option value="C Programming" {% if 'C Programming' in form.course.value %}selected{% endif %}>C Programming</option>
-                    <option value="Computer Science" {% if 'Computer Science' in form.course.value %}selected{% endif %}>Computer Science</option>
-                </select>
-            </div>
+            
 
             <!-- Submit Button -->
             <button type="submit">Register</button>
